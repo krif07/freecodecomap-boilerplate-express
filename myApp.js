@@ -3,6 +3,10 @@ let app = express();
 
 console.log("Hello World");
 
+app.get('/json', function(req, res){
+    const obj = {"message": "Hello json"};
+    res.json(obj);
+});
 app.get('/', function(req, res){
     let absolutePath = __dirname + '/views/index.html';
     res.sendFile(absolutePath);

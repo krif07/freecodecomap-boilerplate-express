@@ -4,7 +4,7 @@ let app = express();
 
 console.log("Hello World");
 
-app.use(function middleware(req, req, next){
+app.use(function middleware(req, res, next){
     const info = req.method + ' ' + req.path + ' - ' + req.ip;
     console.log(info)
     next();

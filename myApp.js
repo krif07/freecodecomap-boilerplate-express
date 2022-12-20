@@ -17,6 +17,7 @@ app.get('/json', function(req, res){
     }
     res.json(obj);
 });
+
 app.get('/', function(req, res){
     let absolutePath = __dirname + '/views/index.html';
     res.sendFile(absolutePath);
@@ -26,6 +27,14 @@ app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
     res.send("Hello Express");
+});
+
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}, (req, res) => {
+    const obj = {"time": req.time};
+    res.json(obj);
 });
 
 module.exports = app;

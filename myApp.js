@@ -8,6 +8,9 @@ console.log("Hello World");
 // middleware to handle post as queryString
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.post('/name', (req, res) => {
+    res.json({"name": `${req.body.first} ${req.body.last}`});
+});
 
 // middleware to handle get
 app.use(function middleware(req, res, next){

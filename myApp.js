@@ -1,9 +1,15 @@
-require('dotenv').config()
+require('dotenv').config();
+let bodyParser = require('body-parser');
 let express = require('express');
 let app = express();
 
 console.log("Hello World");
 
+// middleware to handle post as queryString
+app.use(bodyParser.urlencoded({extended:false}));
+
+
+// middleware to handle get
 app.use(function middleware(req, res, next){
     const info = req.method + ' ' + req.path + ' - ' + req.ip;
     console.log(info)
